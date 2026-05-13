@@ -4,193 +4,178 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>بوابة التدريبات العسكرية</title>
-    <!-- استدعاء خط Cairo وتنسيقات الحركة -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        /* التصميم المستوحى من ألوان الشعار */
+        :root {
+            --bg-deep: #050724; 
+            --header-blue: #0a0e4a; 
+            --gold-accent: #c5a059; 
+            --section-bg: #0a1435; 
+        }
+
         body {
-            background-color: #050724; /* أزرق داكن جداً مقارب لخلفية الشعار[cite: 1] */
+            background-color: var(--bg-deep);
             color: #ffffff;
             font-family: 'Cairo', sans-serif;
-            margin: 0;
-            padding: 0;
+            margin: 0; padding: 0;
             line-height: 1.6;
         }
 
         header {
-            background: linear-gradient(135deg, #0a0e4a 0%, #050724 100%); /* تدرج أزرق الشعار[cite: 1] */
+            background: linear-gradient(135deg, var(--header-blue) 0%, var(--bg-deep) 100%);
             height: 250px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            border-bottom: 4px solid #c5a059; /* ذهبي الشعار[cite: 1] */
+            border-bottom: 4px solid var(--gold-accent);
             text-align: center;
         }
 
-        header h1 {
-            font-size: 2.8rem;
-            color: #c5a059; /* لون ذهبي[cite: 1] */
-            margin: 0;
-            text-shadow: 2px 2px 15px rgba(197, 160, 89, 0.4);
-        }
+        header h1 { font-size: 2.8rem; color: var(--gold-accent); margin: 0; text-shadow: 0 0 15px rgba(197, 160, 89, 0.4); }
 
-        .container {
-            max-width: 1000px;
-            margin: 20px auto;
-            padding: 20px;
-        }
+        .container { max-width: 1000px; margin: 20px auto; padding: 20px; }
 
         section {
-            background: #0a1435; /* أزرق مائل[cite: 1] */
+            background: var(--section-bg);
             margin-bottom: 30px;
             padding: 25px;
-            border-radius: 12px;
-            border-right: 5px solid #c5a059; /* تحديد ذهبي[cite: 1] */
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            border-radius: 15px;
+            border-right: 6px solid var(--gold-accent);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
 
-        h2 {
-            color: #c5a059;
-            border-bottom: 1px solid #1a2a5a;
-            padding-bottom: 10px;
-        }
+        h2 { color: var(--gold-accent); border-bottom: 1px solid rgba(197, 160, 89, 0.2); padding-bottom: 12px; }
 
-        /* تنسيق القوائم والأزرار */
-        .rules-list { list-style: none; padding: 0; }
-        .rules-list li {
-            background: #14224a;
-            margin: 10px 0;
-            padding: 12px;
-            border-radius: 5px;
-            border: 1px solid rgba(197, 160, 89, 0.1);
-        }
-
-        .staff-grid, .commands-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .staff-card, .cmd-box {
-            background: #0d1b42;
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-            border: 1px solid #c5a059;
-        }
-
-        .discord {
-            display: block;
-            background: #050724;
-            color: #c5a059;
-            padding: 5px;
-            border-radius: 20px;
-            margin-top: 10px;
-            font-size: 0.8rem;
-        }
-
-        code {
-            background: #c5a059;
-            color: #050724;
-            padding: 8px;
-            border-radius: 4px;
-            display: block;
-            margin: 10px 0;
-            font-weight: bold;
-        }
-
-        .link-card {
-            background: #c5a059;
-            color: #050724;
-            padding: 15px 30px;
+        .list-items { list-style: none; padding: 0; }
+        .list-items li {
+            background: rgba(255,255,255,0.03);
+            margin-bottom: 10px;
+            padding: 12px 40px 12px 12px;
             border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-            display: inline-block;
+            position: relative;
+        }
+        .list-items li::before { content: "🎖️"; position: absolute; right: 12px; }
+
+        /* ميزة القفل الإداري */
+        .admin-lock {
+            background: #050724;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px dashed var(--gold-accent);
+            text-align: center;
+            margin-top: 20px;
         }
 
-        .link-card:hover {
+        .admin-input {
             background: transparent;
-            color: #c5a059;
-            border: 1px solid #c5a059;
+            border: 1px solid var(--gold-accent);
+            color: var(--gold-accent);
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            outline: none;
         }
 
-        @media (max-width: 768px) {
-            .staff-grid, .commands-grid { grid-template-columns: 1fr; }
+        .btn-action {
+            background: var(--gold-accent);
+            color: var(--bg-deep);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-family: 'Cairo';
         }
+
+        .hidden-content { display: none; margin-top: 20px; }
+
+        .cmd-code { background: var(--gold-accent); color: var(--bg-deep); padding: 8px; border-radius: 4px; display: block; text-align: center; font-weight: bold; margin-top: 10px; }
+
+        footer { text-align: center; padding: 30px; color: rgba(255,255,255,0.2); }
     </style>
 </head>
 <body>
 
     <header>
         <h1 data-aos="zoom-in">بوابة التدريبات العسكرية</h1>
-        <p data-aos="fade-up">النظام • الانضباط • القوة</p>
+        <p data-aos="fade-up">الانضباط هو أساس القوة</p>
     </header>
 
     <div class="container">
         
-        <!-- القسم الأول: القيادة -->
+        <!-- القسم الأول: القوانين -->
         <section data-aos="fade-up">
-            <h2>  قيادة التدريبات العسكرية</h2>
-            <div class="staff-grid">
-                <div class="staff-card">
-                    <h3>المسؤول المدربين</h3>
-                    <p>محمد النفيعي</p>
-                    <span class="discord">Discord: e4bw</span>
-                </div>
-                <div class="staff-card">
-                    <h3>نائب المسؤول المدربين</h3>
-                    <p>مصعب الاسمري</p>
-                    <span class="discord">Discord: 1s2m.</span>
-                </div>
-            </div>
-            <div style="text-align: center; margin-top: 15px;">
-                <p>إدارة المدربين: منذر الشريف (lgnd._5) | صالح القحطاني (15n1)</p>
-            </div>
+            <h2> القسم الأول: قوانين التدريبات</h2>
+            <ul class="list-items">
+                <li>الاحترام والتخلق بالصفات الحميدة بين الجميع.</li>
+                <li>العدل وعدم الإنصاف أو المساواة في الدرجات وفي حالة كشف المخالف تصل إلى الفصل.</li>
+                <li>الانضباط والشدة وعدم الهزلية المبالغ بها.</li>
+                <li>عند تواجد مساعد يجب الاتفاق معه في تقسيم العمل بينكم.</li>
+                <li>يمنع استعمال أي أمر محظور.</li>
+                <li>يمنع قيادة مركبات المدربين في الميادين المحددة وميدان القيادة.</li>
+            </ul>
         </section>
 
-        <!-- القسم الثاني: القوانين -->
+        <!-- القسم الثاني: التعليمات (المحدث) -->
         <section data-aos="fade-right">
-            <h2> قوانين التدريبات</h2>
-            <ul class="rules-list">
-                <li>1. الاحترام والتخلق بالصفات الحميدة بين الجميع.</li>
-                <li>2. العدل والمساواة؛ التلاعب يؤدي للفصل من الخدمة.</li>
-                <li>3. الانضباط والشدة وعدم الهزلية المبالغ بها.</li>
-                <li>4. يمنع استعمال أي أمر محظور نهائياً.</li>
+            <h2> القسم الثاني: تعليمات التدريبات العسكرية</h2>
+            <ul class="list-items">
+                <li><strong>الشرط الأساسي:</strong> لا يمكنك إنشاء تدريب عام إلا بعد وصول الرتبة المحددة واجتياز اختبار خاص من إدارة الدورة.</li>
+                <li><strong>الزي العسكري:</strong> البريهة السوداء للمدربين (من أقل لأعلى رتبة)، وإدارة الدورة البريهة الخضراء دون تغيير الزي.</li>
             </ul>
         </section>
 
         <!-- القسم الثالث: الأوامر -->
         <section data-aos="fade-left">
-            <h2> الأوامر المسموحة</h2>
-            <div class="commands-grid">
-                <div class="cmd-box">
-                    <code>;name | ;to | ;bring | ;kick | ;re | ;view</code>
+            <h2> القسم الثالث: الأوامر والمساعدات</h2>
+            <p>الأوامر المسموحة:</p>
+            <span class="cmd-code">;name | ;to | ;bring | ;kick (Admin فقط) | ;re | ;view | ;Title</span>
+            <p style="margin-top:20px;">مساعدات المدرب:</p>
+            <ul class="list-items">
+                <li><strong>!notepad:</strong> دفتر ملاحظات لرصد الدرجات.</li>
+                <li><strong>!cd:</strong> مؤقت ثواني.</li>
+                <li><strong>SwiftKey:</strong> نسخ تعليمات الاختبارات والتدريبات العامة.</li>
+            </ul>
+        </section>
+
+        <!-- القسم الرابع والخامس والسادس: بوابة الإدارة بالرمز -->
+        <section data-aos="zoom-in">
+            <h2> بوابة مراجع الإدارة</h2>
+            <div class="admin-lock" id="lock-screen">
+                <p>يرجى إدخال رمز التحقق للوصول للروابط والتحرير</p>
+                <input type="password" id="pass-input" class="admin-input" placeholder="الرمز السري">
+                <button class="btn-action" onclick="checkAccess()">دخول</button>
+            </div>
+
+            <div id="admin-content" class="hidden-content">
+                <p style="color: #2ecc71;">✅ تم التحقق.. الروابط متاحة الآن:</p>
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <a href="https://docs.google.com/document/d/1cCbE2hd64_Ikey0BfHfTGjumltTGGW8UkfiFK2LhI-4/edit" target="_blank" style="color: var(--gold-accent);">• نظام مراجع المدربين</a>
+                    <a href="https://docs.google.com/spreadsheets/d/1Zfnp28UNtyyWw-8l-1BlNrDOIApC3-2BWzWnaM4GPwU/edit" target="_blank" style="color: var(--gold-accent);">• لائحة التدريبات العسكرية</a>
+                    <a href="https://docs.google.com/document/d/1y7KYzJQXrHo8DrfqbmEF67bAy-y2bvzFwk_vNAftTaY/edit" target="_blank" style="color: var(--gold-accent);">• كتيب المدربين</a>
                 </div>
-                <div class="cmd-box">
-                    <p>المساعدات: !notepad | !cd | SwiftKey</p>
-                </div>
+                <hr style="border: 0.1px solid rgba(197,160,89,0.2); margin: 20px 0;">
+                <p>القيادة: محمد النفيعي (e4bw) | مصعب الاسمري (1s2m.)</p>
             </div>
         </section>
 
-        <!-- القسم الرابع: الروابط -->
-        <section style="text-align: center;" data-aos="flip-down">
-            <h2> المراجع واللوائح</h2>
-            <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-                <a href="https://docs.google.com/document/d/1cCbE2hd64_Ikey0BfHfTGjumltTGGW8UkfiFK2LhI-4/edit" class="link-card">نظام المراجع</a>
-                <a href="https://docs.google.com/spreadsheets/d/1Zfnp28UNtyyWw-8l-1BlNrDOIApC3-2BWzWnaM4GPwU/edit" class="link-card">لائحة التدريبات</a>
-                <a href="https://docs.google.com/document/d/1y7KYzJQXrHo8DrfqbmEF67bAy-y2bvzFwk_vNAftTaY/edit" class="link-card">كتيب المدربين</a>
-            </div>
-        </section>
     </div>
 
-    <!-- تفعيل تأثيرات الحركة -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-      AOS.init({ duration: 1000, once: true });
+        AOS.init({ duration: 1000, once: true });
+
+        function checkAccess() {
+            const pass = document.getElementById('pass-input').value;
+            if (pass === "1203") {
+                document.getElementById('lock-screen').style.display = 'none';
+                document.getElementById('admin-content').style.display = 'block';
+            } else {
+                alert("الرمز غير صحيح!");
+            }
+        }
     </script>
 </body>
 </html>
