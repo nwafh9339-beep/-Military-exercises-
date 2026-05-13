@@ -4,104 +4,190 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>بوابة التدريبات العسكرية</title>
-    <!-- استدعاء خط Cairo -->
+    <!-- استدعاء خط Cairo وتنسيقات الحركة -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-    <!-- مكتبة التأثيرات الحركية AOS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* التصميم المستوحى من ألوان الشعار */
+        body {
+            background-color: #050724; /* أزرق داكن جداً مقارب لخلفية الشعار[cite: 1] */
+            color: #ffffff;
+            font-family: 'Cairo', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0a0e4a 0%, #050724 100%); /* تدرج أزرق الشعار[cite: 1] */
+            height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 4px solid #c5a059; /* ذهبي الشعار[cite: 1] */
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            color: #c5a059; /* لون ذهبي[cite: 1] */
+            margin: 0;
+            text-shadow: 2px 2px 15px rgba(197, 160, 89, 0.4);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        section {
+            background: #0a1435; /* أزرق مائل[cite: 1] */
+            margin-bottom: 30px;
+            padding: 25px;
+            border-radius: 12px;
+            border-right: 5px solid #c5a059; /* تحديد ذهبي[cite: 1] */
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        h2 {
+            color: #c5a059;
+            border-bottom: 1px solid #1a2a5a;
+            padding-bottom: 10px;
+        }
+
+        /* تنسيق القوائم والأزرار */
+        .rules-list { list-style: none; padding: 0; }
+        .rules-list li {
+            background: #14224a;
+            margin: 10px 0;
+            padding: 12px;
+            border-radius: 5px;
+            border: 1px solid rgba(197, 160, 89, 0.1);
+        }
+
+        .staff-grid, .commands-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .staff-card, .cmd-box {
+            background: #0d1b42;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #c5a059;
+        }
+
+        .discord {
+            display: block;
+            background: #050724;
+            color: #c5a059;
+            padding: 5px;
+            border-radius: 20px;
+            margin-top: 10px;
+            font-size: 0.8rem;
+        }
+
+        code {
+            background: #c5a059;
+            color: #050724;
+            padding: 8px;
+            border-radius: 4px;
+            display: block;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+
+        .link-card {
+            background: #c5a059;
+            color: #050724;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .link-card:hover {
+            background: transparent;
+            color: #c5a059;
+            border: 1px solid #c5a059;
+        }
+
+        @media (max-width: 768px) {
+            .staff-grid, .commands-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- الهيدر (العنوان الرئيسي) -->
     <header>
-        <h1 data-aos="fade-down">بوابة التدريبات العسكرية</h1>
-        <p data-aos="fade-up">النظام، الانضباط، والاحترافية</p>
+        <h1 data-aos="zoom-in">بوابة التدريبات العسكرية</h1>
+        <p data-aos="fade-up">النظام • الانضباط • القوة</p>
     </header>
 
     <div class="container">
         
-        <!-- قسم القيادة (تم تقديمه لأهميته) -->
-        <section class="staff-section" data-aos="zoom-in">
-            <h2><i class="icon">🎖️</i> قيادة وإدارة التدريبات</h2>
+        <!-- القسم الأول: القيادة -->
+        <section data-aos="fade-up">
+            <h2>  قيادة التدريبات العسكرية</h2>
             <div class="staff-grid">
                 <div class="staff-card">
-                    <h3>المسؤول</h3>
+                    <h3>المسؤول المدربين</h3>
                     <p>محمد النفيعي</p>
                     <span class="discord">Discord: e4bw</span>
                 </div>
                 <div class="staff-card">
-                    <h3>نائب المسؤول</h3>
+                    <h3>نائب المسؤول المدربين</h3>
                     <p>مصعب الاسمري</p>
                     <span class="discord">Discord: 1s2m.</span>
                 </div>
             </div>
-            <div class="staff-admin">
-                <h3>إدارة المدربين</h3>
-                <ul>
-                    <li>منذر الشريف (lgnd._5)</li>
-                    <li>صالح القحطاني (15n1)</li>
-                </ul>
+            <div style="text-align: center; margin-top: 15px;">
+                <p>إدارة المدربين: منذر الشريف (lgnd._5) | صالح القحطاني (15n1)</p>
             </div>
         </section>
 
-        <!-- القسم الأول: القوانين -->
+        <!-- القسم الثاني: القوانين -->
         <section data-aos="fade-right">
-            <h2><i class="icon">⚖️</i> القسم الأول: قوانين التدريبات</h2>
+            <h2> قوانين التدريبات</h2>
             <ul class="rules-list">
-                <li>الاحترام والتخلق بالصفات الحميدة بين الجميع.</li>
-                <li>العدل والمساواة في الدرجات؛ التلاعب يؤدي إلى الفصل العسكري.</li>
-                <li>الانضباط والشدة وعدم الهزلية المبالغ بها.</li>
-                <li>التنسيق التام مع المساعدين في تقسيم العمل.</li>
-                <li>يمنع استعمال أي أمر محظور نهائياً.</li>
-                <li>يمنع قيادة مركبات المدربين في مناطق الرماية ومباني القيادة.</li>
+                <li>1. الاحترام والتخلق بالصفات الحميدة بين الجميع.</li>
+                <li>2. العدل والمساواة؛ التلاعب يؤدي للفصل من الخدمة.</li>
+                <li>3. الانضباط والشدة وعدم الهزلية المبالغ بها.</li>
+                <li>4. يمنع استعمال أي أمر محظور نهائياً.</li>
             </ul>
         </section>
 
-        <!-- القسم الثاني: التعليمات -->
+        <!-- القسم الثالث: الأوامر -->
         <section data-aos="fade-left">
-            <h2><i class="icon">📋</i> القسم الثاني: تعليمات التدريبات</h2>
-            <div class="info-box">
-                <p>• إنشاء تدريب عام يتطلب رتبة محددة واجتياز اختبار إدارة الدورة.</p>
-                <p>• <strong>البريهة السوداء:</strong> للمدربين بجميع رتبهم.</p>
-                <p>• <strong>البريهة الخضراء:</strong> لإدارة الدورة (دون تغيير الزي).</p>
-            </div>
-        </section>
-
-        <!-- القسم الثالث: الأوامر والمساعدات -->
-        <section data-aos="fade-up">
-            <h2><i class="icon">⌨️</i> القسم الثالث: الأوامر والمساعدات</h2>
+            <h2> الأوامر المسموحة</h2>
             <div class="commands-grid">
                 <div class="cmd-box">
-                    <h3>الأوامر المسموحة</h3>
-                    <code>;name | ;to | ;bring | ;kick (Admin) | ;re | ;view | ;Title</code>
-                    <p class="warning">تنبيه: استخدام أوامر غير المذكورة قد يؤدي لسحب الصلاحية أو الحظر.</p>
+                    <code>;name | ;to | ;bring | ;kick | ;re | ;view</code>
                 </div>
                 <div class="cmd-box">
-                    <h3>مساعدات المدرب</h3>
-                    <p><strong>!notepad:</strong> دفتر ملاحظات للدرجات.</p>
-                    <p><strong>!cd:</strong> مؤقت ثواني.</p>
-                    <p><strong>SwiftKey:</strong> لنسخ التعليمات بسرعة.</p>
+                    <p>المساعدات: !notepad | !cd | SwiftKey</p>
                 </div>
             </div>
         </section>
 
-        <!-- الأقسام الخارجية (الروابط) -->
-        <section class="links-section" data-aos="flip-up">
-            <h2><i class="icon">🔗</i> المراجع واللوائح</h2>
-            <div class="links-grid">
-                <a href="https://docs.google.com/document/d/1cCbE2hd64_Ikey0BfHfTGjumltTGGW8UkfiFK2LhI-4/edit" target="_blank" class="link-card">نظام المراجع</a>
-                <a href="https://docs.google.com/spreadsheets/d/1Zfnp28UNtyyWw-8l-1BlNrDOIApC3-2BWzWnaM4GPwU/edit" target="_blank" class="link-card">لائحة التدريبات</a>
-                <a href="https://docs.google.com/document/d/1y7KYzJQXrHo8DrfqbmEF67bAy-y2bvzFwk_vNAftTaY/edit" target="_blank" class="link-card">كتيب المدربين</a>
+        <!-- القسم الرابع: الروابط -->
+        <section style="text-align: center;" data-aos="flip-down">
+            <h2> المراجع واللوائح</h2>
+            <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                <a href="https://docs.google.com/document/d/1cCbE2hd64_Ikey0BfHfTGjumltTGGW8UkfiFK2LhI-4/edit" class="link-card">نظام المراجع</a>
+                <a href="https://docs.google.com/spreadsheets/d/1Zfnp28UNtyyWw-8l-1BlNrDOIApC3-2BWzWnaM4GPwU/edit" class="link-card">لائحة التدريبات</a>
+                <a href="https://docs.google.com/document/d/1y7KYzJQXrHo8DrfqbmEF67bAy-y2bvzFwk_vNAftTaY/edit" class="link-card">كتيب المدربين</a>
             </div>
         </section>
-
     </div>
 
-    <footer>
-        <p>جميع الحقوق محفوظة - إدارة التدريبات العسكرية</p>
-    </footer>
-
-    <!-- مكتبة AOS للحركة -->
+    <!-- تفعيل تأثيرات الحركة -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       AOS.init({ duration: 1000, once: true });
