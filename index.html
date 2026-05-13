@@ -52,46 +52,28 @@
         .list-items li {
             background: rgba(255,255,255,0.03);
             margin-bottom: 10px;
-            padding: 12px 40px 12px 12px;
+            padding: 12px 20px;
             border-radius: 8px;
-            position: relative;
+            border-right: 3px solid var(--gold-accent);
         }
-        .list-items li::before { content: "🎖️"; position: absolute; right: 12px; }
-
-        /* ميزة القفل الإداري */
-        .admin-lock {
-            background: #050724;
-            padding: 20px;
-            border-radius: 10px;
-            border: 1px dashed var(--gold-accent);
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .admin-input {
-            background: transparent;
-            border: 1px solid var(--gold-accent);
-            color: var(--gold-accent);
-            padding: 10px;
-            border-radius: 5px;
-            text-align: center;
-            outline: none;
-        }
-
-        .btn-action {
-            background: var(--gold-accent);
-            color: var(--bg-deep);
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            font-family: 'Cairo';
-        }
-
-        .hidden-content { display: none; margin-top: 20px; }
 
         .cmd-code { background: var(--gold-accent); color: var(--bg-deep); padding: 8px; border-radius: 4px; display: block; text-align: center; font-weight: bold; margin-top: 10px; }
+
+        .btn-link {
+            background: var(--gold-accent);
+            color: var(--bg-deep);
+            padding: 12px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+            margin: 5px;
+            transition: 0.3s;
+        }
+
+        .btn-link:hover {
+            opacity: 0.8;
+        }
 
         footer { text-align: center; padding: 30px; color: rgba(255,255,255,0.2); }
     </style>
@@ -100,14 +82,14 @@
 
     <header>
         <h1 data-aos="zoom-in">بوابة التدريبات العسكرية</h1>
-        <p data-aos="fade-up">الانضباط هو أساس القوة</p>
+        <p data-aos="fade-up">النظام - الانضباط - القوة</p>
     </header>
 
     <div class="container">
         
         <!-- القسم الأول: القوانين -->
         <section data-aos="fade-up">
-            <h2> القسم الأول: قوانين التدريبات</h2>
+            <h2>القسم الأول: قوانين التدريبات</h2>
             <ul class="list-items">
                 <li>الاحترام والتخلق بالصفات الحميدة بين الجميع.</li>
                 <li>العدل وعدم الإنصاف أو المساواة في الدرجات وفي حالة كشف المخالف تصل إلى الفصل.</li>
@@ -118,46 +100,39 @@
             </ul>
         </section>
 
-        <!-- القسم الثاني: التعليمات (المحدث) -->
+        <!-- القسم الثاني: التعليمات -->
         <section data-aos="fade-right">
-            <h2> القسم الثاني: تعليمات التدريبات العسكرية</h2>
+            <h2>القسم الثاني: تعليمات التدريبات العسكرية</h2>
             <ul class="list-items">
-                <li><strong>الشرط الأساسي:</strong> لا يمكنك إنشاء تدريب عام إلا بعد وصول الرتبة المحددة واجتياز اختبار خاص من إدارة الدورة.</li>
-                <li><strong>الزي العسكري:</strong> البريهة السوداء للمدربين (من أقل لأعلى رتبة)، وإدارة الدورة البريهة الخضراء دون تغيير الزي.</li>
+                <li>شرط أساسي ليمكنك إنشاء تدريب عام وصول الرتبة المحددة وإنتظار اختبار خاص بها من إدارة الدورة.</li>
+                <li>البريهة السوداء للمدربين من أقل إلى أعلى رتبة، إدارة الدورة بريهة الخضراء دون تغيير الزي.</li>
             </ul>
         </section>
 
         <!-- القسم الثالث: الأوامر -->
         <section data-aos="fade-left">
-            <h2> القسم الثالث: الأوامر والمساعدات</h2>
+            <h2>القسم الثالث: الأوامر والمساعدات</h2>
             <p>الأوامر المسموحة:</p>
-            <span class="cmd-code">;name | ;to | ;bring | ;kick (Admin فقط) | ;re | ;view | ;Title</span>
+            <span class="cmd-code">;name | ;to | ;bring | ;kick | ;re | ;view | ;Title</span>
             <p style="margin-top:20px;">مساعدات المدرب:</p>
             <ul class="list-items">
-                <li><strong>!notepad:</strong> دفتر ملاحظات لرصد الدرجات.</li>
-                <li><strong>!cd:</strong> مؤقت ثواني.</li>
-                <li><strong>SwiftKey:</strong> نسخ تعليمات الاختبارات والتدريبات العامة.</li>
+                <li>notepad: دفتر ملاحظات لرصد الدرجات.</li>
+                <li>cd: مؤقت ثواني.</li>
+                <li>SwiftKey: نسخ تعليمات الاختبارات والتدريبات العامة.</li>
             </ul>
         </section>
 
-        <!-- القسم الرابع والخامس والسادس: بوابة الإدارة بالرمز -->
+        <!-- مراجع الإدارة (مفتوحة مباشرة) -->
         <section data-aos="zoom-in">
-            <h2> بوابة مراجع الإدارة</h2>
-            <div class="admin-lock" id="lock-screen">
-                <p>يرجى إدخال رمز التحقق للوصول للروابط والتحرير</p>
-                <input type="password" id="pass-input" class="admin-input" placeholder="الرمز السري">
-                <button class="btn-action" onclick="checkAccess()">دخول</button>
+            <h2>مراجع الإدارة والروابط</h2>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 15px;">
+                <a href="https://docs.google.com/document/d/1cCbE2hd64_Ikey0BfHfTGjumltTGGW8UkfiFK2LhI-4/edit" target="_blank" class="btn-link">نظام مراجع المدربين</a>
+                <a href="https://docs.google.com/spreadsheets/d/1Zfnp28UNtyyWw-8l-1BlNrDOIApC3-2BWzWnaM4GPwU/edit" target="_blank" class="btn-link">لائحة التدريبات العسكرية</a>
+                <a href="https://docs.google.com/document/d/1y7KYzJQXrHo8DrfqbmEF67bAy-y2bvzFwk_vNAftTaY/edit" target="_blank" class="btn-link">كتيب المدربين</a>
             </div>
-
-            <div id="admin-content" class="hidden-content">
-                <p style="color: #2ecc71;">✅ تم التحقق.. الروابط متاحة الآن:</p>
-                <div style="display: flex; flex-direction: column; gap: 10px;">
-                    <a href="https://docs.google.com/document/d/1cCbE2hd64_Ikey0BfHfTGjumltTGGW8UkfiFK2LhI-4/edit" target="_blank" style="color: var(--gold-accent);">• نظام مراجع المدربين</a>
-                    <a href="https://docs.google.com/spreadsheets/d/1Zfnp28UNtyyWw-8l-1BlNrDOIApC3-2BWzWnaM4GPwU/edit" target="_blank" style="color: var(--gold-accent);">• لائحة التدريبات العسكرية</a>
-                    <a href="https://docs.google.com/document/d/1y7KYzJQXrHo8DrfqbmEF67bAy-y2bvzFwk_vNAftTaY/edit" target="_blank" style="color: var(--gold-accent);">• كتيب المدربين</a>
-                </div>
-                <hr style="border: 0.1px solid rgba(197,160,89,0.2); margin: 20px 0;">
+            <div style="text-align: center; margin-top: 25px; border-top: 1px solid rgba(197, 160, 89, 0.2); padding-top: 15px;">
                 <p>القيادة: محمد النفيعي (e4bw) | مصعب الاسمري (1s2m.)</p>
+                <p>إدارة المدربين: منذر الشريف (lgnd._5) | صالح القحطاني (15n1)</p>
             </div>
         </section>
 
@@ -166,16 +141,6 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000, once: true });
-
-        function checkAccess() {
-            const pass = document.getElementById('pass-input').value;
-            if (pass === "1203") {
-                document.getElementById('lock-screen').style.display = 'none';
-                document.getElementById('admin-content').style.display = 'block';
-            } else {
-                alert("الرمز غير صحيح!");
-            }
-        }
     </script>
 </body>
 </html>
